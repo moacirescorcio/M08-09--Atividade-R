@@ -1,15 +1,38 @@
 import { question } from "readline-sync";
+import {pedir_numero} from "./util.js"
 
 function main(){
     //iniciando com cabeçalho
     cabecalho()
 
     //escolha do número
-    const numero_menu = Number(question('>> Escolha um número do menu: '))
+    const numero_menu = Number(question('\n>> Escolha um número do menu: '))
 
     //processamentos
+    //numero 1 - vetor com tamanho n e dps com os números n
     if (numero_menu === 1){
+        const n = Number(question('Tamnho do vetor: '))
+        const vetor = Array(n)
+        console.log(vetor)
+
+        let novo_vetor = []
+        for (let i = 0; i < n; i++){
+            novo_vetor[i] = n
+        }
+        console.log(novo_vetor)
         
+    }
+
+    //numero 2
+    if(numero_menu === 2){
+        const n = pedir_numero('Tamanho do vetor: ')
+        const vetor = Array(n)
+        for(let i = 0; i < n; i++){
+            const numero = pedir_numero(`Digite o número [${i}] - `)
+            vetor[i] = numero
+        }
+
+        console.log(vetor)
     }
 }
 
