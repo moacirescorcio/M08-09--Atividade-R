@@ -6,34 +6,114 @@ function main(){
     cabecalho()
 
     //escolha do número
-    const numero_menu = Number(question('\n>> Escolha um número do menu: '))
+    let numero_menu = Number(question('\n>> Escolha um número do menu: '))
+    let vetor
+    while(numero_menu != 0){
+        //processamentos
+        //numero 1 - vetor com tamanho n e dps com os números n
+        if (numero_menu === 1){
+            const n = Number(question('Tamnho do vetor: '))
+            vetor = Array(n)
+            console.log(`>> Seu vetor de tamanho ${n} vazio:`)
+            console.log(vetor)
 
-    //processamentos
-    //numero 1 - vetor com tamanho n e dps com os números n
-    if (numero_menu === 1){
-        const n = Number(question('Tamnho do vetor: '))
-        const vetor = Array(n)
-        console.log(vetor)
-
-        let novo_vetor = []
-        for (let i = 0; i < n; i++){
-            novo_vetor[i] = n
+            let novo_vetor = []
+            for (let i = 0; i < n; i++){
+                novo_vetor[i] = n
+            }
+            console.log(`>> Seu vetor de tamanho ${n} com o número ${n}:`)
+            console.log(novo_vetor)
+            
+            
         }
-        console.log(novo_vetor)
+
+        //numero 2
+        if(numero_menu === 2){
+            const n = pedir_numero('Tamanho do vetor: ')
+            vetor = Array(n)
+            for(let i = 0; i < n; i++){
+                const numero = pedir_numero(`Digite o número [${i}] - `)
+                vetor[i] = numero
+            }
+
+            console.log(`>> Seu vetor de tamanho ${n} com os números digitados:`)
+            console.log(vetor)
+        }
+
+        //numero 3
+        if(numero_menu === 3){
+            const n = pedir_numero('Tamanho do vetor: ')
+            const minimo = pedir_numero('Número mínimo: ')
+            const maximo = pedir_numero('Número máximo: ')
+            vetor = Array(n)
+            for(let i = 0; i < n; i++){
+                let numero = numero_aleatori(minimo,maximo)
+                vetor[i] = numero
+
+            }
+            console.log(`>> Seu vetor de tamanho ${n} com o número aleatórios de ${minimo} até ${maximo}:`)
+            console.log(vetor)
+        }
+
+        //numero 4
+        if(numero_menu === 4){
+            console.log(`>> Seu vetor: `)
+            console.log(vetor)
+        }
+
+        //numero 5
+        if(numero_menu === 5){
+            const n = pedir_numero('Digite o potência')
+            let novo_vetor = []
+            let i = 0
+            for(let item of vetor){
+                novo_vetor[i] = item**n
+                i++
+            }
+            console.log(`>> Seu vetor elevado a potência ${n}:`)
+            console.log(novo_vetor)
+        }
+
+        //numero 6
+        if(numero_menu === 6){
+            let menor_q_0 = 0
+            let igual_0 = 0
+            let maior_q_0 = 0
+            for(let item of vetor){
+                if(item < 0){
+                    menor_q_0++
+                }else if(item === 0){
+                    igual_0++
+                }else if(item > 0){
+                    maior_q_0++
+                }
+            }
+            console.log('>>Quantitativos dos números:')
+            console.log(`Menor que 0: ${menor_q_0}`)
+            console.log(`Igual a 0: ${igual_0}`)
+            console.log(`Maior que 0: ${maior_q_0}`)
+        }
+
+        //numero 7
+        if(numero_menu === 7){
+            
+        }
         
+        
+        
+        
+        //escolha do número
+        numero_menu = Number(question('\n>> Escolha um número do menu: '))
     }
+        
 
-    //numero 2
-    if(numero_menu === 2){
-        const n = pedir_numero('Tamanho do vetor: ')
-        const vetor = Array(n)
-        for(let i = 0; i < n; i++){
-            const numero = pedir_numero(`Digite o número [${i}] - `)
-            vetor[i] = numero
-        }
+    
+}
 
-        console.log(vetor)
-    }
+
+
+function numero_aleatori(min,max){
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 function cabecalho(){
