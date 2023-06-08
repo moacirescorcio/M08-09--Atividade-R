@@ -47,7 +47,7 @@ function main(){
             const maximo = pedir_numero('Número máximo: ')
             vetor = Array(n)
             for(let i = 0; i < n; i++){
-                let numero = numero_aleatori(minimo,maximo)
+                let numero = numero_aleatorio(minimo,maximo)
                 vetor[i] = numero
 
             }
@@ -96,9 +96,88 @@ function main(){
 
         //numero 7
         if(numero_menu === 7){
-            
+            let somatorio = 0
+            let somatorio_pos = 0
+            let somatorio_neg = 0
+            for(let item of vetor){
+                somatorio += item
+                if(item > 0){
+                    somatorio_pos += item
+                }else if(item < 0){
+                    somatorio_neg += item
+                }
+            }
+            console.log('>>Somatório dos números do vetor: ')
+            console.log(`Total: ${somatorio}`)
+            console.log(`Total positivos: ${somatorio_pos}`)
+            console.log(`Total negativos: ${somatorio_neg}`)
         }
         
+        //numero 8
+        if(numero_menu === 8){
+            let media_total = 0
+            let media_pos = 0
+            let media_neg = 0
+            let somatorio = 0
+            let somatorio_pos = 0
+            let somatorio_neg = 0
+            let contador_pos = 0
+            let contador_neg = 0
+            for(let item of vetor){
+                somatorio += item
+                if(item > 0){
+                    somatorio_pos += item
+                    contador_pos++
+                }else if(item < 0){
+                    somatorio_neg += item
+                    contador_neg++
+                }
+            }
+            media_total = calcular_media(somatorio, vetor.length)
+            media_pos = calcular_media(somatorio_pos, contador_pos)
+            media_neg = calcular_media(somatorio_neg, contador_neg)
+            console.log(`Média total: ${media_total.toFixed(2)}`)
+            console.log(`Média total positiva: ${media_pos.toFixed(2)}`)
+            console.log(`Média total negativa: ${media_neg.toFixed(2)}`)
+
+        }
+
+        //numero 9
+        if(numero_menu === 9){
+            let maior = 0
+            let menor = Infinity
+            for(let item of vetor){
+                if(item > maior){
+                    maior = item
+                }
+                if(item < menor){
+                    menor = item
+                }
+            }
+            console.log(`Maior: ${maior}`)
+            console.log(`Menor: ${menor}`)
+        }
+
+        //numero 10
+        if(numero_menu === 10){
+            let vetor_pos = []
+            let vetor_neg = []
+            let i = 0
+            let j = 0
+            for(let item of vetor){
+                if(item > 0){
+                    vetor_pos[i] = item
+                    i++
+                }else if(item < 0){
+                    vetor_neg[j] = item
+                    j++
+                }
+            }
+            const aleatorio_pos = vetor_pos[Math.floor(Math.random(vetor_pos) * vetor_pos.length)]
+            const aleatorio_neg = vetor_neg[Math.floor(Math.random(vetor_neg) * vetor_neg.length)]
+            console.log(`Número aleatório positivo: ${aleatorio_pos}`)
+            console.log(`Número aleatório negativo: ${aleatorio_neg}`)
+        }
         
         
         
@@ -110,9 +189,13 @@ function main(){
     
 }
 
+function calcular_media(somatorio, vetor){
+    return (somatorio)/vetor
+}
 
 
-function numero_aleatori(min,max){
+
+function numero_aleatorio(min,max){
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
