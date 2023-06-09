@@ -178,6 +178,13 @@ function main(){
             console.log(`Número aleatório positivo: ${aleatorio_pos}`)
             console.log(`Número aleatório negativo: ${aleatorio_neg}`)
         }
+
+        //numero 11
+        if(numero_menu === 11){
+            const n = pedir_numero('Quantos novos arrays? ')
+            const t = pedir_numero('De que tamanho? ')
+            for(let i = 0)
+        }
         
         
         
