@@ -183,8 +183,31 @@ function main(){
         if(numero_menu === 11){
             const n = pedir_numero('Quantos novos arrays? ')
             const t = pedir_numero('De que tamanho? ')
-            for(let i = 0)
+            let novo_array = []
+            vetor.length / n
+            for(let j = 0; j < n; j++){
+                novo_array = dividir_vetor(vetor)
+                console.log(novo_array, t)
+            }
+            
         }
+
+        //numero 12
+        if(numero_menu === 12){
+            const n = pedir_numero('Tamanho do vetor: ')
+            let novo_vetor = Array(n)
+            for(let i = 0; i < n; i++){
+                const numero = pedir_numero(`Digite o número [${i}] - `)
+                novo_vetor[i] = numero
+            }
+            if(comparar_vetores(vetor, novo_vetor)){
+                console.log('Os vetores são iguais!')
+            }else{
+                console.log('Os vetores são diferentes!')
+            }
+        
+        }
+        
         
         
         
@@ -194,6 +217,25 @@ function main(){
         
 
     
+}
+
+function comparar_vetores(vetor, novo_vetor){
+    if(vetor.length != novo_vetor.length){
+        return false
+    }
+    for(let i = 0; i < novo_vetor.length; i++){
+        if(vetor[i] != novo_vetor[i] || vetor.indexOf(vetor[i]) !== novo_vetor.indexOf(novo_vetor[i]))
+        return false
+    }
+    return true
+}
+
+function dividir_vetor(vetor, t){
+    let novo_vetor = []
+    for(let i = 0; i < t; i++){
+        novo_vetor[i] = vetor[i]
+    }
+    return novo_vetor
 }
 
 function calcular_media(somatorio, vetor){
