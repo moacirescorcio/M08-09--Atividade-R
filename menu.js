@@ -207,10 +207,86 @@ function main(){
             }
         
         }
+
+        //numero 13
+        if(numero_menu === 13){
+            const n = pedir_numero('Top X maiores números: ')
+            let vetor_ordenado = quicksort(vetor)
+            let n_maiores = vetor_ordenado.slice(-n)
+            console.log(`Seu vetor ordenado: ${vetor_ordenado}`)
+            console.log(`Top ${n} maiores: ${n_maiores}`)
+
+        }
         
+        //numero 14
+        if(numero_menu === 14){
+            const n = pedir_numero('Top X menores números: ')
+            let vetor_ordenado = quicksort(vetor)
+            let n_menores = vetor_ordenado.slice(0, n)
+            console.log(`Seu vetor ordenado: ${vetor_ordenado}`)
+            console.log(`Top ${n} menores: ${n_menores}`)
+        }
         
+        //numero 15
+        if(numero_menu === 15){
+            let somatorio = 0
+            for(let item of vetor){
+                somatorio += item
+            }
+            let media = somatorio / vetor.length
+            
+            let menores_q_media = []
+            let maiores_q_media = []
+            for(let item of vetor){
+                if(item < media){
+                    menores_q_media.push(item)
+                }else{
+                    maiores_q_media.push(item)
+                }
+            }
+            console.log(`Média: ${media.toFixed(1)}`)
+            console.log(`Menores: ${menores_q_media}`)
+            console.log(`Maiores: ${maiores_q_media}`)
+        }
+
+        //numero 17
+        if(numero_menu === 17){
+            let somatorio_pos_div_2 = 0
+            let produto_neg_par = 0
+            
+            for(let item of vetor){
+                if(item > 0 && item % 2 === 0){
+                    somatorio_pos_div_2 += item
+                }
+                if(item < 0 && item % 2 === 0){
+                    produto_neg_par = item * produto_neg_par
+                }
+            }
+            const somatorio = somatorio_pos_div_2 + produto_neg_par
+            console.log(`Seu vetor: ${vetor}`)
+            console.log(`Somatorio dos positivos pares com o produto dos negativos pares: ${somatorio}`)
+        }
         
+        //numero 18
+        if(numero_menu === 18){
+            const vetor_ordem_crescente = quicksort(vetor)
+            console.log(`Seu vetor: ${vetor}`)
+            console.log(`Seu vetor em ordem crescente: ${vetor_ordem_crescente}`)
+        }
+
+        //numero 19
+        if(numero_menu === 19){
+            const vetor_ordem_decrescente = quicksort_decrescente(vetor)
+            console.log(`Seu vetor: ${vetor}`)
+            console.log(`Seu vetor em ordem descrescente: ${vetor_ordem_decrescente}`)
+        }
         
+        //numero 20
+        if(numero_menu === 20){
+            
+        }
+
+
         //escolha do número
         numero_menu = Number(question('\n>> Escolha um número do menu: '))
     }
@@ -218,6 +294,47 @@ function main(){
 
     
 }
+
+function quicksort(vetor) {
+    if (vetor.length <= 1) {
+      return vetor
+    } else {
+      const pivo = vetor[0]
+      const menores = []
+      const maiores = []
+  
+      for (let i = 1; i < vetor.length; i++) {
+        if (vetor[i] <= pivo) {
+          menores.push(vetor[i])
+        } else {
+          maiores.push(vetor[i])
+        }
+      }
+  
+      return [...quicksort(menores), pivo, ...quicksort(maiores)]
+    }
+}
+
+function quicksort_decrescente(vetor) {
+    if (vetor.length <= 1) {
+      return vetor
+    } else {
+      const pivo = vetor[0]
+      const menores = []
+      const maiores = []
+  
+      for (let i = 1; i < vetor.length; i++) {
+        if (vetor[i] <= pivo) {
+          menores.push(vetor[i])
+        } else {
+          maiores.push(vetor[i])
+        }
+      }
+  
+      return [...quicksort_decrescente(maiores), pivo, ...quicksort_decrescente(menores)]
+    }
+}
+  
 
 function comparar_vetores(vetor, novo_vetor){
     if(vetor.length != novo_vetor.length){
