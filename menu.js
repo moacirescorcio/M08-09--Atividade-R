@@ -1,5 +1,5 @@
 import { question } from "readline-sync";
-import {pedir_numero} from "./util.js"
+import {pedir_numero, positivos, negativos} from "./util.js"
 
 function main(){
     //iniciando com cabeçalho
@@ -139,6 +139,37 @@ function main(){
             console.log(`Média total: ${media_total.toFixed(2)}`)
             console.log(`Média total positiva: ${media_pos.toFixed(2)}`)
             console.log(`Média total negativa: ${media_neg.toFixed(2)}`)
+            //mediana
+            const vetor_organizado = quicksort(vetor)
+            const vetor_positivos = quicksort(positivos(vetor))
+            const vetor_negativos = quicksort(negativos(vetor))
+            let mediana_total = 0
+            let mediana_pos = 0
+            let mediana_neg = 0
+            if(vetor_organizado.length % 2 != 0){
+                mediana_total = vetor_organizado[Math.floor(vetor_organizado.length/2)+1]
+            }else{
+                let indice_meio_total = vetor_organizado / 2
+                mediana_total = Math.floor((vetor_organizado[indice_meio_total - 1] + vetor_organizado[indice_meio_total]) / 2)
+            }
+
+            if(vetor_positivos.length % 2 != 0){
+                mediana_pos = vetor_positivos[Math.floor(vetor_positivos.length/2)+1]
+            }else{
+                let indice_meio_pos = vetor_positivos / 2
+                mediana_pos = Math.floor((vetor_positivos[indice_meio_pos - 1] + vetor_positivos[indice_meio_pos]) / 2)
+            }
+
+            if(vetor_negativos.length % 2 != 0){
+                mediana_pos = vetor_negativos[Math.floor(vetor_negativos.length/2)+1]
+            }else{
+                let indice_meio_neg = vetor_negativos / 2
+                mediana_neg = Math.floor((vetor_negativos[indice_meio_neg - 1] + vetor_negativos[indice_meio_neg]) / 2)
+            }
+
+            console.log(`Mediana total: ${mediana_total}`)
+            console.log(`Mediana positivos: ${mediana_pos}`)
+            console.log(`Mediana negativos: ${mediana_neg}`)
 
         }
 
