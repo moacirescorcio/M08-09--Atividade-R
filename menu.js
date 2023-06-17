@@ -224,11 +224,7 @@ function main(){
             const n = pedir_numero('Quantos novos arrays? ')
             const t = pedir_numero('De que tamanho? ')
             let novo_array = []
-            vetor.length / n
-            for(let j = 0; j < n; j++){
-                novo_array = dividir_vetor(vetor)
-                console.log(novo_array, t)
-            }
+            
             
         }
 
