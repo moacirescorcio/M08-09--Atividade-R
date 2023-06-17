@@ -283,16 +283,37 @@ function main(){
         
         //numero 20
         if(numero_menu === 20){
+            const n = pedir_numero('Digite um número: ')
+            const m = pedir_numero('Digite um segundo número: ')
+            let vetor_sem_multiplos = []
+            for(let item of vetor){
+                if(item % n != 0 && item & m != 0){
+                   vetor_sem_multiplos.push(item)
+                }
+
+            }
+            console.log(`Seu vetor: ${vetor}`)
+            console.log(`Seu vetor sem múltiplos de ${n} e ${m}: ${vetor_sem_multiplos}`)
             
         }
+
+        
 
 
         //escolha do número
         numero_menu = Number(question('\n>> Escolha um número do menu: '))
     }
+
+    console.log(tchaus_randomicos())
         
 
     
+}
+
+function tchaus_randomicos(){
+    const vetor_tchaus = ['Bom te ver!', 'Até a próxima!', 'Tchau, coração!', 'Se for, vá na paz!']
+    const numero_random = Math.floor(Math.random() * vetor_tchaus.length)
+    return vetor_tchaus[numero_random]
 }
 
 function quicksort(vetor) {

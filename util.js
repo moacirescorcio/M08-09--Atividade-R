@@ -10,3 +10,6 @@ export function pedir_numero(label = 'Digite um número: '){
     
     return Number(numero)
 }
+
+
+
