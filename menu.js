@@ -63,7 +63,7 @@ function main(){
 
         //numero 5
         if(numero_menu === 5){
-            const n = pedir_numero('Digite o potência')
+            const n = pedir_numero('Digite o potência: ')
             let novo_vetor = []
             let i = 0
             for(let item of vetor){
@@ -143,8 +143,6 @@ function main(){
             const vetor_organizado = quicksort(vetor)
             const vetor_positivos = quicksort(positivos(vetor))
             const vetor_negativos = quicksort(negativos(vetor))
-            console.log(vetor_positivos)
-            console.log(vetor_negativos)
             let mediana_total = 0
             let mediana_pos = 0
             let mediana_neg = 0
@@ -221,9 +219,10 @@ function main(){
 
         //numero 11
         if(numero_menu === 11){
-            const n = pedir_numero('Quantos novos arrays? ')
-            const t = pedir_numero('De que tamanho? ')
-            let novo_array = []
+            const t = pedir_numero('De que tamanho os novos arrays? ')
+            const pedacos = repartirArrayEmPedacos(vetor,t)
+            console.log(`Seus novos arrays:`)
+            console.log(pedacos)
             
             
         }
@@ -344,6 +343,18 @@ function main(){
         
 
     
+}
+
+function repartirArrayEmPedacos(array, tamanho) {
+    const pedacos = []
+    const numeroPedacos = Math.ceil(array.length / tamanho)
+  
+    for (let i = 0; i < numeroPedacos; i++) {
+      const pedaco = array.slice(i * tamanho, (i + 1) * tamanho)
+      pedacos.push(pedaco)
+    }
+  
+    return pedacos
 }
 
 function tchaus_randomicos(){
